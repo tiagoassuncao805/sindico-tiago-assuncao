@@ -6,63 +6,266 @@
     <title>Tiago Assunção | Síndico Profissional Certificado</title>
     <style>
         :root {
-            --primary: #1e3a5f;
-            --secondary: #2c5282;
+            --primary: #0f2942;
+            --secondary: #1e40af;
             --accent: #d97706;
             --accent-hover: #b45309;
-            --bg: #f8fafc;
-            --text: #334155;
-            --muted: #64748b;
-            --white: #ffffff;
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --text: #1e293b;
+            --muted: #475569;
+            --border: #e2e8f0;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: var(--bg); color: var(--text); line-height: 1.6; }
-        
-        /* Cabeçalho */
-        header { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: var(--white); padding: 65px 20px; text-align: center; }
-        header h1 { font-size: 2.3rem; margin-bottom: 10px; letter-spacing: -0.5px; }
-        header p { font-size: 1.15rem; opacity: 0.92; max-width: 720px; margin: 0 auto 28px; }
-        
-        .btn { display: inline-block; background-color: var(--accent); color: var(--white); padding: 14px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; transition: all 0.25s ease; cursor: pointer; border: none; font-size: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-        .btn:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
-        
-        /* Estrutura Principal */
-        .container { max-width: 1040px; margin: 0 auto; padding: 45px 20px; }
-        section { margin-bottom: 55px; }
-        h2 { color: var(--primary); font-size: 1.6rem; border-bottom: 2px solid #cbd5e1; padding-bottom: 8px; margin-bottom: 22px; }
-        .section-intro { margin-bottom: 22px; color: var(--text); }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
-        
-        /* Cards Gerais */
-        .card { background: var(--white); padding: 22px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); border-top: 4px solid var(--primary); transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-        .card h3 { color: var(--primary); margin-bottom: 10px; font-size: 1.15rem; }
-        
-        /* Cards de Certificados */
-        .cert-card { border-top-color: var(--accent); display: flex; flex-direction: column; justify-content: space-between; }
-        .cert-meta { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; font-weight: 600; gap: 8px; }
-        .cert-inst { color: var(--accent); }
-        .cert-card p { font-size: 0.92rem; color: var(--text); }
 
-        /* Áreas de Imagens e Documentos */
-        .doc-placeholder { background: #e2e8f0; border: 2px dashed #94a3b8; border-radius: 6px; height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 15px; color: #475569; margin-bottom: 14px; font-size: 0.9rem; overflow: hidden; }
-        .cert-img-box { height: 185px; padding: 6px; background: #f1f5f9; border: 1px solid #cbd5e1; }
-        .doc-placeholder img { width: 100%; height: 100%; object-fit: contain; border-radius: 4px; cursor: pointer; transition: transform 0.2s ease; }
-        .doc-placeholder img:hover { transform: scale(1.02); }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
 
-        /* Caixa de Destaque */
-        .info-box { background: #eff6ff; border-left: 4px solid var(--secondary); padding: 16px 20px; border-radius: 4px; margin-top: 18px; font-size: 0.96rem; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+        }
 
-        /* Rodapé */
-        footer { background: var(--primary); color: var(--white); text-align: center; padding: 35px 20px; font-size: 0.92rem; }
-        footer p { margin-bottom: 8px; }
-        footer a { color: var(--white); text-decoration: underline; }
+        header {
+            background: linear-gradient(135deg, #0f2942 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 72px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent);
+        }
 
-        /* Modal para ampliar imagens ao clicar */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(15, 23, 42, 0.88); align-items: center; justify-content: center; padding: 20px; }
-        .modal img { max-width: 92%; max-height: 92vh; border-radius: 6px; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        .modal-close { position: absolute; top: 20px; right: 30px; color: var(--white); font-size: 2.2rem; font-weight: bold; cursor: pointer; }
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            color: #e2e8f0;
+            max-width: 760px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--accent);
+            color: #ffffff;
+            padding: 15px 34px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cta:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 50px 24px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 1.65rem;
+            font-weight: 700;
+            border-bottom: 2px solid #cbd5e1;
+            padding-bottom: 10px;
+            margin-bottom: 24px;
+        }
+
+        .section-intro {
+            margin-bottom: 26px;
+            color: var(--muted);
+            font-size: 1.02rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 960px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .card {
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            border-top: 4px solid var(--primary);
+            box-shadow: 0 2px 10px rgba(15, 41, 66, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 22px rgba(15, 41, 66, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+            line-height: 1.35;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .cert-card {
+            border-top-color: var(--accent);
+            justify-content: space-between;
+        }
+
+        .cert-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+            font-weight: 600;
+            gap: 8px;
+        }
+
+        .cert-inst {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .doc-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            height: 195px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 12px;
+            color: var(--muted);
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+            overflow: hidden;
+        }
+
+        .doc-box.dashed {
+            border: 2px dashed #94a3b8;
+            background: #e2e8f0;
+        }
+
+        .doc-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .doc-box img:hover {
+            transform: scale(1.03);
+        }
+
+        .info-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--secondary);
+            padding: 18px 22px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 0.98rem;
+            color: var(--text);
+        }
+
+        footer {
+            background: var(--primary);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.95rem;
+            border-top: 4px solid var(--accent);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #fbbf24;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.9);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal img {
+            max-width: 92%;
+            max-height: 92vh;
+            border-radius: 6px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 32px;
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -70,129 +273,68 @@
 <header>
     <h1>Tiago Assunção</h1>
     <p>Síndico Profissional Certificado | Gestão Operacional, Manutenção Predial e Conformidade Legal</p>
-    <button onclick="abrirWhatsApp()" class="btn">Solicitar Proposta ou Diagnóstico Gratuito</button>
+    <a href="https://wa.me." target="_blank" rel="noopener noreferrer" class="btn-cta">Solicitar Proposta ou Diagnóstico Gratuito</a>
 </header>
-
 <div class="container">
 
     <section>
         <h2>Perfil Profissional</h2>
-        <p>Gestor com mais de 15 anos de experiência em operações complexas, controle rigoroso de custos, análise de contratos e liderança de equipes, somados a <strong>6 anos de experiência prática na sindicância (2013 a 2019)</strong> e <strong>68 horas de especialização técnica pelo SíndicoNet Experts</strong>. Atuação focada na valorização do patrimônio, regularização legal e transparência absoluta na prestação de contas.</p>
-        <div class="info-box">
-            <strong>Modalidade de Contratação:</strong> Atuação como síndico profissional autônomo (Pessoa Física), com formalização transparente e emissão de <strong>RPA (Recibo de Pagamento Autônomo)</strong> para comprovação fiscal e contábil do condomínio.
+        <p>Gestor com mais de 15 anos de experiência operacional e <strong>6 anos de atuação como síndico (2013 a 2019)</strong>, apoiado por <strong>68 horas de formação técnica no SíndicoNet Experts</strong>. Foco em valorização patrimonial e transparência contábil via <strong>RPA</strong>.</p>
+        <div class="info-box" style="margin-top: 14px; border-left-color: var(--accent); background: #fffbeb;">
+            <strong>Visita Técnica Gratuita (40 Minutos):</strong> Diagnóstico inicial sem compromisso para avaliar AVCB, elevadores, extintores e manutenções obrigatórias.
         </div>
     </section>
 
     <section>
-        <h2>Obras e Resultados Comprovados (2013 a 2019)</h2>
-        <div class="grid">
+        <h2>Obras e Resultados (2013 a 2019)</h2>
+        <div class="grid-3">
             <div class="card">
-                <h3>Segurança Contra Incêndio (AVCB)</h3>
-                <p>Regularização completa e obtenção do AVCB após quase 10 anos de vencimento, incluindo adequação de iluminação de emergência e sinalização fotoluminescente.</p>
+                <h3>AVCB e Incêndio</h3>
+                <p>Regularização do AVCB após quase 10 anos vencido, com adequação de iluminação e sinalização fotoluminescente.</p>
             </div>
             <div class="card">
-                <h3>Infraestrutura e Manutenção</h3>
-                <p>Instalação de sistema de para-raios (SPDA), revitalização (limpeza e pintura) de fachada, impermeabilização de reservatórios e troca dos registros das prumadas de água.</p>
+                <h3>Infraestrutura</h3>
+                <p>Instalação de SPDA (para-raios), pintura/revitalização de fachada, impermeabilização e troca de registros das prumadas.</p>
             </div>
             <div class="card">
-                <h3>Segurança e Governança</h3>
-                <p>Ampliação do sistema de monitoramento por câmeras (CFTV), condução de assembleias ordinárias e extraordinárias e 100% das contas aprovadas sem ressalvas.</p>
+                <h3>Segurança e Gestão</h3>
+                <p>Expansão do CFTV, condução de assembleias e histórico de 100% de aprovação de contas.</p>
             </div>
         </div>
-    </section>
-
-    <section>
-        <h2>Acervo Documental e Comprovações</h2>
-        <p class="section-intro">Registros reais de entregas, regularizações e mandatos exercidos na gestão condominial:</p>
-        <div class="grid">
-            <div class="card">
-                <div class="doc-placeholder">
-                    <!-- QUANDO SALVAR A FOTO, SUBSTITUA O TEXTO ABAIXO POR: <img src="avcb.jpg" alt="AVCB Renovado" onclick="ampliarImagem(this.src)"> -->
-                    <strong>[Inserir Foto: AVCB Renovado]</strong>
-                    <span>Documento oficial emitido pelo Corpo de Bombeiros</span>
-                </div>
-                <h3>Renovação de AVCB</h3>
-                <p>Regularização integral das exigências técnicas de combate a incêndio do edifício.</p>
-            </div>
-
-            <div class="card">
-                <div class="doc-placeholder">
-                    <!-- QUANDO SALVAR A FOTO, SUBSTITUA O TEXTO ABAIXO POR: <img src="ata-2014.jpg" alt="Ata Assembleia 2014" onclick="ampliarImagem(this.src)"> -->
-                    <strong>[Inserir Foto: Ata de Assembleia 2014]</strong>
-                    <span>Registro oficial de eleição e posse como síndico</span>
-                </div>
-                <h3>Eleição e Governança (2014)</h3>
-                <p>Comprovação de mandato eletivo e condução formal de assembleia condominial.</p>
-            </div>
-
-            <div class="card">
-                <div class="doc-placeholder">
-                    <!-- QUANDO SALVAR A FOTO, SUBSTITUA O TEXTO ABAIXO POR: <img src="dedetizacao.jpg" alt="Execução de Dedetização" onclick="ampliarImagem(this.src)"> -->
-                    <strong>[Inserir Foto: Ordem de Serviço Dedetização]</strong>
-                    <span>Certificado de controle de pragas e manutenção preventiva</span>
-                </div>
-                <h3>Manutenção Preventiva</h3>
-                <p>Controle rigoroso de cronogramas sanitários, certificados e fornecedores homologados.</p>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Formação Técnica e Certificações (68 Horas)</h2>
-        <p class="section-intro">Capacitação completa pelo SíndicoNet Experts cobrindo as áreas jurídica, trabalhista, financeira, administrativa e de engenharia predial (clique na imagem para ampliar):</p>
-        <div class="grid">
-            
-            <!-- Certificado 1 -->
-            <div class="card cert-card">
-                <div>
-                    <div class="doc-placeholder cert-img-box">
-                        <img src="certificado-formacao-sindicos.jpg" alt="Certificado Formação de Síndicos Profissionais e Gestores Condominiais" onclick="ampliarImagem(this.src)">
-                    </div>
-                    <div class="cert-meta">
-                        <span class="cert-inst">SíndicoNet Experts</span>
-                        <span>25/06/2022 • 12h</span>
-                    </div>
-                    <h3>Formação de Síndicos Profissionais e Gestores Condominiais</h3>
-                </div>
-                <p>15 módulos cobrindo fundamentos jurídicos, assembleias sem riscos, manutenção planejada, seguros, gestão financeira, auditoria, cobrança de inadimplentes e mediação de conflitos.</p>
-            </div>
-
-            <!-- Certificado 2 -->
-            <div class="card cert-card">
-<h3>PARTE 2 DE 3</h3>
-<div class="container">
-    <section>
-        <h2>Perfil Profissional</h2>
-        <p>Gestor com mais de 15 anos de experiência, incluindo <strong>6 anos como síndico (2013 a 2019)</strong> e capacitação pelo SíndicoNet Experts.</p>
-    </section>
-
-    <section>
-        <h2>Obras e Resultados (2013–2019)</h2>
-        <ul>
-            <li><strong>Segurança:</strong> Regularização e emissão do AVCB.</li>
-            <li><strong>Infraestrutura:</strong> Instalação de SPDA, revitalização de fachada e impermeabilização.</li>
-            <li><strong>Governança:</strong> Ampliação do CFTV e aprovação de contas sem ressalvas.</li>
-        </ul>
     </section>
 
     <section>
         <h2>Acervo Documental</h2>
-        <p>Espaços para anexar comprovantes de AVCB, Ata de Assembleia e Ordem de Serviço.</p>
+        <div class="grid-3">
+            <div class="card">
+                <div class="doc-box dashed"><strong>[Inserir Foto: AVCB]</strong></div>
+                <h3>Renovação de AVCB</h3>
+                <p>Documento oficial emitido pelo Corpo de Bombeiros.</p>
+            </div>
+            <div class="card">
+                <div class="doc-box dashed"><strong>[Inserir Foto: Ata 2014]</strong></div>
+                <h3>Eleição e Posse</h3>
+                <p>Registro oficial de mandato eletivo como síndico.</p>
+            </div>
+            <div class="card">
+                <div class="doc-box dashed"><strong>[Inserir Foto: Ordem de Serviço]</strong></div>
+                <h3>Manutenção Preventiva</h3>
+                <p>Certificados de controle de pragas e prestadores homologados.</p>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>Formação Técnica e Certificações</h2>
-        <p>Certificados de Formação de Síndicos Profissionais e Especialização Avançada pelo SíndicoNet Experts.</p>
-    </section>
 </div>
 <div class="container" style="padding-top: 0;">
+
     <section>
-        <div class="grid">
+        <h2>Formação Técnica e Certificações (68 Horas)</h2>
+        <p class="section-intro">Capacitação completa pelo SíndicoNet Experts cobrindo as áreas jurídica, trabalhista, financeira, administrativa e de engenharia predial (clique na imagem para ampliar):</p>
+        <div class="grid-3">
             
-            <!-- Certificado 1 -->
             <div class="card cert-card">
                 <div>
-                    <div class="doc-placeholder cert-img-box">
+                    <div class="doc-box">
                         <img src="certificado-formacao-sindicos.jpg" alt="Certificado Formação de Síndicos Profissionais e Gestores Condominiais" onclick="ampliarImagem(this.src)">
                     </div>
                     <div class="cert-meta">
@@ -204,10 +346,9 @@
                 <p>15 módulos cobrindo fundamentos jurídicos, assembleias sem riscos, manutenção planejada, seguros, gestão financeira, auditoria, cobrança de inadimplentes e mediação de conflitos.</p>
             </div>
 
-            <!-- Certificado 2 -->
             <div class="card cert-card">
                 <div>
-                    <div class="doc-placeholder cert-img-box">
+                    <div class="doc-box">
                         <img src="certificado-especializacao-avancada.jpg" alt="Certificado Especialização Avançada de Síndicos Profissionais e Gestores Condominiais" onclick="ampliarImagem(this.src)">
                     </div>
                     <div class="cert-meta">
@@ -219,10 +360,9 @@
                 <p>18 módulos focados em implantação de condomínios, plano diretor, compliance e LGPD, gestão de condomínios clube, otimização de custos e liderança de equipes.</p>
             </div>
 
-            <!-- Certificado 3 -->
             <div class="card cert-card">
                 <div>
-                    <div class="doc-placeholder cert-img-box">
+                    <div class="doc-box">
                         <img src="certificado-habilidades-extraordinarias.jpg" alt="Certificado Habilidades Extraordinárias para Síndicos Profissionais" onclick="ampliarImagem(this.src)">
                     </div>
                     <div class="cert-meta">
@@ -234,10 +374,9 @@
                 <p>10 módulos sobre condução estratégica de assembleias, relacionamento com condôminos, conselho diretivo, administradora e funcionários.</p>
             </div>
 
-            <!-- Certificado 4 -->
             <div class="card cert-card">
                 <div>
-                    <div class="doc-placeholder cert-img-box">
+                    <div class="doc-box">
                         <img src="certificado-manutencao-predial.jpg" alt="Certificado Gestão de Manutenção Predial para Síndicos e Gestores Prediais" onclick="ampliarImagem(this.src)">
                     </div>
                     <div class="cert-meta">
@@ -249,10 +388,9 @@
                 <p>6 módulos sobre planos de manutenção preventiva, gestão de equipamentos e sistemas prediais, rotina com zeladoria e manejo documental normativo.</p>
             </div>
 
-            <!-- Certificado 5 -->
             <div class="card cert-card">
                 <div>
-                    <div class="doc-placeholder cert-img-box">
+                    <div class="doc-box">
                         <img src="certificado-trabalhista-esocial.jpg" alt="Certificado Questões Trabalhistas e eSocial em Condomínios" onclick="ampliarImagem(this.src)">
                     </div>
                     <div class="cert-meta">
@@ -264,10 +402,9 @@
                 <p>5 módulos abrangendo contratação, vigência de contrato de trabalho, obrigações do eSocial, reforma trabalhista e procedimentos de rescisão.</p>
             </div>
 
-            <!-- Certificado 6 -->
             <div class="card cert-card">
                 <div>
-                    <div class="doc-placeholder cert-img-box">
+                    <div class="doc-box">
                         <img src="certificado-direito-condominial.jpg" alt="Certificado Aspectos Básicos, Avançados e Polêmicos do Direito Condominial" onclick="ampliarImagem(this.src)">
                     </div>
                     <div class="cert-meta">
@@ -281,11 +418,23 @@
 
         </div>
     </section>
+
 </div>
 
 <footer>
     <p><strong>Tiago Assunção</strong> - Síndico Profissional Certificado</p>
-    <p>WhatsApp: <a href="#" onclick="abrirWhatsApp(); return false;">(11) 98699-3362</a> | E-mail: <a href="mailto:tiago.assuncao805@outlook.com">tiago.assuncao805@outlook.com</a></p>
+    <p>
+        WhatsApp: 
+        <a href="https://wa.me." target="_blank" rel="noopener noreferrer">
+            (11) 98699-3362
+        </a>
+    </p>
+    <p>
+        E-mail: 
+        <a href="mailto:tiago.assuncao805@outlook.com">
+            tiago.assuncao805@outlook.com
+        </a>
+    </p>
 </footer>
 
 <div id="imageModal" class="modal" onclick="fecharModal()">
@@ -294,21 +443,16 @@
 </div>
 
 <script>
-    function abrirWhatsApp() {
-        const telefone = "5511986993362";
-        const mensagem = encodeURIComponent("Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de solicitar uma proposta ou agendar a visita técnica gratuita.");
-        window.open(`https://whatsapp.com{telefone}&text=${mensagem}`, "_blank");
-    }
-
     function ampliarImagem(src) {
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImg");
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImg");
         modal.style.display = "flex";
         modalImg.src = src;
     }
 
     function fecharModal() {
-        document.getElementById("imageModal").style.display = "none";
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
     }
 </script>
 
