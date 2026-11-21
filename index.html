@@ -449,22 +449,21 @@
 
 <script>
     function abrirWhatsApp(origem) {
-        var telefone = "5511986993362";
+        var ddi = "55";
+        var ddd = "11";
+        var parte1 = "98699";
+        var parte2 = "3362";
+        var telefone = ddi + ddd + parte1 + parte2;
+
         var texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de solicitar uma proposta ou diagnóstico gratuito.";
-        
         if (origem === "contato") {
             texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de conversar.";
         }
 
         var msg = encodeURIComponent(texto);
-        var protocolo = "https://";
-        var sub = "web";
-        var ponto = ".";
-        var site = "whatsapp.com";
-        var rota = "/send?phone=" + telefone + "&text=" + msg;
-
-        var urlFinal = protocolo + sub + ponto + site + rota;
-        window.open(urlFinal, "_blank", "noopener,noreferrer");
+        
+        // Abre direto o aplicativo instalado (Windows, Android ou iPhone)
+        window.location.href = "whatsapp://send?phone=" + telefone + "&text=" + msg;
     }
 
     function ampliarImagem(src) {
