@@ -476,10 +476,28 @@
 
 <script>
     function abrirWhatsApp(origem) {
-        var ddi = "55";
-        var ddd = "11";
-        var parte1 = "98699";
-        var parte2 = "3362";
-        var telefone = ddi + ddd + parte1 + parte2;
+        var telefone = "5511986993362";
 
         var texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de solicitar uma proposta ou diagnóstico gratuito.";
+        if (origem === "contato") {
+            texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de conversar.";
+        }
+
+        var msg = encodeURIComponent(texto);
+        
+        // Funciona tanto no celular (app) quanto no computador (WhatsApp Web ou app)
+        window.open("https://wa.me" + telefone + "?text=" + msg, "_blank");
+    }
+
+    function ampliarImagem(src) {
+        var modal = document.getElementById("imageModal");
+        var modalImg = document.getElementById("modalImg");
+        modal.style.display = "flex";
+        modalImg.src = src;
+    }
+
+    function fecharModal() {
+        var modal = document.getElementById("imageModal");
+        modal.style.display = "none";
+    }
+</script>
