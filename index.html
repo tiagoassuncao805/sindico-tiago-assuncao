@@ -457,15 +457,14 @@
         }
 
         var msg = encodeURIComponent(texto);
-        var isCelular = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
+        var protocolo = "https://";
+        var sub = "web";
+        var ponto = ".";
+        var site = "whatsapp.com";
+        var rota = "/send?phone=" + telefone + "&text=" + msg;
 
-        if (isCelular) {
-            window.location.href = "whatsapp://send?phone=" + telefone + "&text=" + msg;
-        } else {
-            var dominio = "https://whatsapp.com";
-            var caminho = "/send?phone=" + telefone + "&text=" + msg;
-            window.open(dominio + caminho, "_blank", "noopener,noreferrer");
-        }
+        var urlFinal = protocolo + sub + ponto + site + rota;
+        window.open(urlFinal, "_blank", "noopener,noreferrer");
     }
 
     function ampliarImagem(src) {
