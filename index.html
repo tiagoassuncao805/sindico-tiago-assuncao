@@ -449,20 +449,23 @@
 
 <script>
     function abrirWhatsApp(origem) {
-        var ddi = "55";
-        var ddd = "11";
-        var numero = "986993362";
-        var telefoneCompleto = ddi + ddd + numero;
-
+        var telefone = "5511986993362";
         var texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de solicitar uma proposta ou diagnóstico gratuito.";
+        
         if (origem === "contato") {
             texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de conversar.";
         }
 
-        var urlBase = "https://whatsapp.com";
-        var linkFinal = urlBase + "?phone=" + telefoneCompleto + "&text=" + encodeURIComponent(texto);
+        var msg = encodeURIComponent(texto);
+        var isCelular = /Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
 
-        window.open(linkFinal, "_blank", "noopener,noreferrer");
+        if (isCelular) {
+            window.location.href = "whatsapp://send?phone=" + telefone + "&text=" + msg;
+        } else {
+            var dominio = "https://whatsapp.com";
+            var caminho = "/send?phone=" + telefone + "&text=" + msg;
+            window.open(dominio + caminho, "_blank", "noopener,noreferrer");
+        }
     }
 
     function ampliarImagem(src) {
