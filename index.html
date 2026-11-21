@@ -273,7 +273,10 @@
 <header>
     <h1>Tiago Assunção</h1>
     <p>Síndico Profissional Certificado | Gestão Operacional, Manutenção Predial e Conformidade Legal</p>
-    <a href="https://wa.me." target="_blank" rel="noopener noreferrer" class="btn-cta">Solicitar Proposta ou Diagnóstico Gratuito</a>
+    <button type="button" onclick="abrirWhatsApp('proposta')" class="btn-cta">
+    Solicitar Proposta ou Diagnóstico Gratuito
+</button>
+
 </header>
 <div class="container">
 
@@ -425,8 +428,10 @@
     <p><strong>Tiago Assunção</strong> - Síndico Profissional Certificado</p>
     <p>
         WhatsApp: 
-        <a href="https://wa.me." target="_blank" rel="noopener noreferrer">
-            (11) 98699-3362
+        <a href="#contato" onclick="abrirWhatsApp('contato'); return false;">
+    (11) 98699-3362
+</a>
+
         </a>
     </p>
     <p>
@@ -443,6 +448,23 @@
 </div>
 
 <script>
+    function abrirWhatsApp(origem) {
+        var ddi = "55";
+        var ddd = "11";
+        var numero = "986993362";
+        var telefoneCompleto = ddi + ddd + numero;
+
+        var texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de solicitar uma proposta ou diagnóstico gratuito.";
+        if (origem === "contato") {
+            texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de conversar.";
+        }
+
+        var urlBase = "https://whatsapp.com";
+        var linkFinal = urlBase + "?phone=" + telefoneCompleto + "&text=" + encodeURIComponent(texto);
+
+        window.open(linkFinal, "_blank", "noopener,noreferrer");
+    }
+
     function ampliarImagem(src) {
         var modal = document.getElementById("imageModal");
         var modalImg = document.getElementById("modalImg");
@@ -455,6 +477,7 @@
         modal.style.display = "none";
     }
 </script>
+
 
 </body>
 </html>
