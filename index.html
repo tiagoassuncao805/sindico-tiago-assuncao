@@ -476,7 +476,11 @@
 
 <script>
     function abrirWhatsApp(origem) {
-        var telefone = "5511986993362";
+        var ddi = "55";
+        var ddd = "11";
+        var parte1 = "98699";
+        var parte2 = "3362";
+        var telefone = ddi + ddd + parte1 + parte2;
 
         var texto = "Olá Tiago! Vi seu portfólio de Síndico Profissional e gostaria de solicitar uma proposta ou diagnóstico gratuito.";
         if (origem === "contato") {
@@ -485,8 +489,8 @@
 
         var msg = encodeURIComponent(texto);
         
-        // Funciona tanto no celular (app) quanto no computador (WhatsApp Web ou app)
-        window.open("https://wa.me" + telefone + "?text=" + msg, "_blank");
+        // Abre direto o aplicativo instalado (Windows, Android ou iPhone)
+        window.location.href = "whatsapp://send?phone=" + telefone + "&text=" + msg;
     }
 
     function ampliarImagem(src) {
@@ -501,3 +505,4 @@
         modal.style.display = "none";
     }
 </script>
+
